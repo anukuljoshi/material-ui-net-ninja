@@ -5,6 +5,7 @@ import { purple, teal } from "@material-ui/core/colors";
 
 import Notes from "./pages/Notes";
 import Create from "./pages/Create";
+import Layout from "./components/Layout/Layout";
 
 
 const theme = createTheme({
@@ -26,14 +27,16 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<Router>
-				<Switch>
-					<Route exact path={"/"}>
-						<Notes></Notes>
-					</Route>
-					<Route exact path={"/create"}>
-						<Create></Create>
-					</Route>
-				</Switch>
+				<Layout>
+					<Switch>
+						<Route exact path={"/"}>
+							<Notes></Notes>
+						</Route>
+						<Route exact path={"/create"}>
+							<Create></Create>
+						</Route>
+					</Switch>
+				</Layout>
 			</Router>
 		</ThemeProvider>
 	);
