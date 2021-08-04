@@ -113,7 +113,6 @@ const Layout = (props: LayoutProps) => {
             <Divider></Divider>
             {
               menuItems.map((item: MenuItem) => (
-                <>
                 <ListItem 
                   button 
                   key={item.text} 
@@ -123,8 +122,6 @@ const Layout = (props: LayoutProps) => {
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.text} />
                 </ListItem>
-                <Divider></Divider>
-                </>
               ))
             }
             </>
