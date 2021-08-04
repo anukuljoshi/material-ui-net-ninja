@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container, Grid, Paper } from '@material-ui/core'
+import { Container, Grid } from '@material-ui/core'
 
+import NoteCard from '../components/Notes/NoteCard'
 
 import { API_URL } from '../constants/api';
-
-interface INote{
-	title: string,
-	details: string,
-	category: string,
-	id: number
-}
+import { INote } from '../types/main.types'
 
 const Notes = () => {
 	const [notes, setNotes] = useState([]);
@@ -23,16 +18,23 @@ const Notes = () => {
 			})
 			.catch(err => console.log(err));
 	}, [])
+
+	const handleDeleteNote = async (id: number) => {
+		await fetch(`${API_URL}/${id}`, {
+			method: 'DELETE'
+		});
+
+		const newNotes = notes.filter((note: INote) => note.id!==id)
+		setNotes(newNotes);
+	}
 	
 	return (
 		<Container>
-			<Grid container spacing={2}>
+			<Grid container spacing={3}>
 			{
 				notes.map((note: INote) => (
 					<Grid item xs={12} md={6} lg={4} key={note.id}>
-						<Paper>
-							{note.title}
-						</Paper>
+						<NoteCard note={note} handleDeleteNote={handleDeleteNote}></NoteCard>
 					</Grid>
 				))
 			}
