@@ -17,24 +17,29 @@ interface MenuItem{
 
 const drawerWidth: number = 240;
 
-const useStyles = makeStyles({
-  root:{
-    display: 'flex'
-  },
-  page: {
-    background: '#f9f9f9',
-    width: '100%'
-  },
-  drawer: {
-    width: drawerWidth
-  },
-  drawerPaper: {
-    width: drawerWidth
-  },
-  active: {
-    background: '#f4f4f4'
+const useStyles = makeStyles((theme) => {
+  return {
+    root:{
+      display: 'flex'
+    },
+    page: {
+      background: '#f9f9f9',
+      width: '100%',
+      padding: theme.spacing(3),
+    },
+    drawer: {
+      width: drawerWidth
+    },
+    drawerPaper: {
+      width: drawerWidth
+    },
+    active: {
+      background: '#f4f4f4'
+    },
+    title:{
+      padding: theme.spacing(2)
+    }
   }
-
 })
 
 const Layout = (props: LayoutProps) => {
@@ -70,7 +75,7 @@ const Layout = (props: LayoutProps) => {
         }}
       >
         <div>
-          <Typography variant="h5">
+          <Typography variant="h5" className={classes.title}>
             Notes
           </Typography>
         </div>
@@ -78,17 +83,25 @@ const Layout = (props: LayoutProps) => {
         {/* list links */}
         <List>
           {
-            menuItems.map((item: MenuItem) => (
-              <ListItem 
-                button 
-                key={item.text} 
-                onClick={() => history.push(item.path)}
-                className={location.pathname===item.path ? classes.active : ''}
-              >
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
-              </ListItem>
-            ))
+            <>
+            <Divider></Divider>
+            {
+              menuItems.map((item: MenuItem) => (
+                <>
+                <ListItem 
+                  button 
+                  key={item.text} 
+                  onClick={() => history.push(item.path)}
+                  className={location.pathname===item.path ? classes.active : ''}
+                >
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.text} />
+                </ListItem>
+                <Divider></Divider>
+                </>
+              ))
+            }
+            </>
           }
         </List>
       </Drawer>
