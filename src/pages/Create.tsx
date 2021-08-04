@@ -1,4 +1,6 @@
-import { Typography, Button, ButtonGroup, Container } from "@material-ui/core";
+import { Typography, Button, Container } from "@material-ui/core";
+
+import { AcUnitOutlined, Send, KeyboardArrowRight } from '@material-ui/icons'
 
 const Create = () => {
 	return (
@@ -17,31 +19,25 @@ const Create = () => {
 				type="submit"
 				color="secondary"
 				variant="contained"
+				endIcon={<KeyboardArrowRight></KeyboardArrowRight>}
 			>
 				Submit
 			</Button>
 
-			{/* <Button 
-				type="submit"
-				variant="contained"
-				color="primary"
-			>Hello</Button>
-			<Button 
-				type="submit"
-				variant="outlined"
-				color="secondary"
-			>Hello</Button>
+			{/* icons */}
+			{/* <br />
+			<AcUnitOutlined fontSize="small"></AcUnitOutlined>
+			<AcUnitOutlined></AcUnitOutlined>
+			<AcUnitOutlined color="secondary" fontSize="large"></AcUnitOutlined>
 
 			<br />
-			<br />
-			<ButtonGroup color="secondary" variant="contained">
-				<Button 
-				>One</Button>
-				<Button 
-				>Two</Button>
-				<Button 
-				>Three</Button>
-			</ButtonGroup> */}
+			
+			<AcUnitOutlined color="action"></AcUnitOutlined>
+			<AcUnitOutlined color="disabled"></AcUnitOutlined>
+			<AcUnitOutlined color="error"></AcUnitOutlined>
+			<AcUnitOutlined color="primary"></AcUnitOutlined>
+			<AcUnitOutlined color="secondary"></AcUnitOutlined>
+			 */}
 		</Container>
 	);
 };
