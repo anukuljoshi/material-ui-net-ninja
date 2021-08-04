@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { createTheme, ThemeProvider } from '@material-ui/core';
-import { purple } from "@material-ui/core/colors";
+import { purple, teal } from "@material-ui/core/colors";
 
 import Notes from "./pages/Notes";
 import Create from "./pages/Create";
@@ -9,9 +9,7 @@ import Create from "./pages/Create";
 
 const theme = createTheme({
 	palette: {
-		primary: {
-			main: '#FEFEFE'
-		},
+		primary: teal,
 		secondary: purple
 	},
 	typography:{
