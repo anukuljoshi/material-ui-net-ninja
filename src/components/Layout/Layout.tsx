@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Drawer, Divider, Typography, List, ListItem, ListItemIcon, ListItemText, AppBar, Toolbar } from '@material-ui/core';
+import { makeStyles, Drawer, Divider, Typography, List, ListItem, ListItemIcon, ListItemText, AppBar, Toolbar, Avatar} from '@material-ui/core';
 import { AddCircleOutline, SubjectOutlined } from '@material-ui/icons';
 
 import { SvgIconProps } from '@material-ui/core/SvgIcon'
@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme) => {
     toolbar: theme.mixins.toolbar,
     date: {
       flexGrow: 1
+    },
+    avatar: {
+      marginLeft: theme.spacing(2)
     }
   }
 })
@@ -84,6 +87,7 @@ const Layout = (props: LayoutProps) => {
           <Typography>
             Mario
           </Typography>
+          <Avatar className={classes.avatar} src={'https://image.flaticon.com/icons/png/512/147/147144.png'}/>
         </Toolbar>
       </AppBar>
 
