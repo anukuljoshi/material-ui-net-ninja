@@ -1,9 +1,11 @@
 import React from 'react'
-import { makeStyles, Drawer, Divider, Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { makeStyles, Drawer, Divider, Typography, List, ListItem, ListItemIcon, ListItemText, AppBar, Toolbar } from '@material-ui/core';
 import { AddCircleOutline, SubjectOutlined } from '@material-ui/icons';
 
 import { SvgIconProps } from '@material-ui/core/SvgIcon'
 import { useHistory, useLocation } from 'react-router-dom';
+
+import { format } from 'date-fns'
 
 interface LayoutProps{
   children: React.ReactNode
@@ -28,16 +30,23 @@ const useStyles = makeStyles((theme) => {
       padding: theme.spacing(3),
     },
     drawer: {
-      width: drawerWidth
+      width: drawerWidth,
     },
     drawerPaper: {
-      width: drawerWidth
+      width: drawerWidth,
     },
     active: {
-      background: '#f4f4f4'
+      background: '#f4f4f4',
     },
     title:{
-      padding: theme.spacing(2)
+      padding: theme.spacing(2),
+    },
+    appbar: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
+    toolbar: theme.mixins.toolbar,
+    date: {
+      flexGrow: 1
     }
   }
 })
@@ -64,6 +73,19 @@ const Layout = (props: LayoutProps) => {
   return (
     <div className={classes.root}>
       {/* app bar */}
+      <AppBar
+        className={classes.appbar}
+        elevation={0}
+      >
+        <Toolbar>
+          <Typography className={classes.date}>
+            Date: { format(new Date(), 'do MMMM Y') }
+          </Typography>
+          <Typography>
+            Mario
+          </Typography>
+        </Toolbar>
+      </AppBar>
 
       {/* side drawer */}
       <Drawer
@@ -105,8 +127,9 @@ const Layout = (props: LayoutProps) => {
           }
         </List>
       </Drawer>
-
+        
       <div className={classes.page}>
+        <div className={classes.toolbar}></div>
         {children}
       </div>
     </div>
