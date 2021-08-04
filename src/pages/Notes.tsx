@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
+import { Container, Grid, Paper } from '@material-ui/core'
+
+
 import { API_URL } from '../constants/api';
 
 interface INote{
@@ -22,15 +25,19 @@ const Notes = () => {
 	}, [])
 	
 	return (
-		<div>
+		<Container>
+			<Grid container spacing={2}>
 			{
 				notes.map((note: INote) => (
-					<p key={note.id}>
-						{note.title}
-					</p>
+					<Grid item xs={12} md={6} lg={4} key={note.id}>
+						<Paper>
+							{note.title}
+						</Paper>
+					</Grid>
 				))
 			}
-		</div>
+			</Grid>
+		</Container>
 	);
 };
 
