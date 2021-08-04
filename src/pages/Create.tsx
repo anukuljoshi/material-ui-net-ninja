@@ -1,8 +1,8 @@
-import { Typography } from "@material-ui/core";
+import { Typography, Button, ButtonGroup, Container } from "@material-ui/core";
 
 const Create = () => {
 	return (
-		<div>
+		<Container>
 			<Typography
 				variant="h5"
 				component="h2"
@@ -11,7 +11,38 @@ const Create = () => {
 			>
 				Create a New Node
 			</Typography>
-		</div>
+
+			<Button
+				onClick={() => console.log('Button clicked')}
+				type="submit"
+				color="secondary"
+				variant="contained"
+			>
+				Submit
+			</Button>
+
+			{/* <Button 
+				type="submit"
+				variant="contained"
+				color="primary"
+			>Hello</Button>
+			<Button 
+				type="submit"
+				variant="outlined"
+				color="secondary"
+			>Hello</Button>
+
+			<br />
+			<br />
+			<ButtonGroup color="secondary" variant="contained">
+				<Button 
+				>One</Button>
+				<Button 
+				>Two</Button>
+				<Button 
+				>Three</Button>
+			</ButtonGroup> */}
+		</Container>
 	);
 };
 
