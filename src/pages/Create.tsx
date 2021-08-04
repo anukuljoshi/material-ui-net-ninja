@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom'
 
 import { makeStyles, Typography, Button, Container, TextField, Radio, RadioGroup, FormControlLabel, FormLabel, FormControl } from "@material-ui/core";
 import { KeyboardArrowRight } from '@material-ui/icons'
+
+
+import { API_URL } from '../constants/api'
 
 const useStyles = makeStyles({
 	field: {
@@ -13,6 +17,7 @@ const useStyles = makeStyles({
 
 const Create = () => {
 	const classes = useStyles();
+	const history = useHistory();
 
 	const [title, setTitle] = useState('');
 	const [details, setDetails] = useState('');
@@ -35,7 +40,23 @@ const Create = () => {
 			setDetailsError(true);
 		}
 		if(title && details){
-			console.log(title, details, category)
+			const config = {
+				method: "POST",
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					title: title,
+					details: details,
+					category: category
+				})
+			}
+			fetch(API_URL, config)
+			.then(res => res.json())
+			.then(data => {
+				history.push('/')
+			})
+			.catch(err => console.log(err))
 		}
 	}
 
